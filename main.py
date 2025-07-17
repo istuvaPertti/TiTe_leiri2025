@@ -1,5 +1,6 @@
 import random
 import os
+import main2
 
 
 map_height = 16
@@ -42,7 +43,26 @@ def render_map(pelaajax,pelaajay,kartta,view_range):
                     print("██",end="")
                 case "2":
                     print("  ",end="")
+                case "seinä":
+                    print("██",end="")
         print()
+
+def movement():
+
+    key=input()
+
+    if key == "w":
+        ylös()
+
+    elif key == "s":
+        alas()
+
+    elif key == "d":
+        oikealle()
+
+    elif key == "a":
+        vasemmalle()
+
 
 def ylös():
     global pelaajay
@@ -64,20 +84,7 @@ def vasemmalle():
 while True:
     clear()
     render_map(pelaajax,pelaajay,kartta,view_range)
-
-    key = input()
-
-    if key == "w":
-        ylös()
-
-    elif key == "s":
-        alas()
-
-    elif key == "d":
-        oikealle()
-
-    elif key == "a":
-        vasemmalle()
+    movement()
 
 
   
