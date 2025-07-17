@@ -1,4 +1,6 @@
 import random
+import os
+
 
 map_height = 16
 map_width = 16
@@ -8,8 +10,11 @@ pelaajax =50
 
 view_range = 10
 
-total_mapy = 100
-total_mapx = 100
+total_mapy = 500
+total_mapx = 500
+
+def clear():
+    os.system("cls"if os.name=="nt"else"clear")
 
 def empty():
     pass
@@ -34,15 +39,10 @@ def render_map(pelaajax,pelaajay,kartta,view_range):
                 continue
             match kartta[(x,y)]:
                 case "1":
-                    print("  ",end="")
-                case "2":
                     print("██",end="")
+                case "2":
+                    print("  ",end="")
         print()
-    print()
-    print()
-    print()
-    print()     
-    print()
 
 def ylös():
     global pelaajay
@@ -62,7 +62,7 @@ def vasemmalle():
 
 
 while True:
-
+    clear()
     render_map(pelaajax,pelaajay,kartta,view_range)
 
     key = input()
