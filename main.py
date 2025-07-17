@@ -5,13 +5,18 @@ import main2
 
 pelaajay =50
 pelaajax =50
+
+vihollineny=50
+vihollinenx=51
+
+
 pelaajafalsey=50
 
 
 view_range = 15
 
-total_mapy = 200
-total_mapx = 200
+total_mapy = 2000
+total_mapx = 2000
 
 def clear():
     os.system("cls"if os.name=="nt"else"clear")
@@ -47,6 +52,8 @@ def render_map(pelaajax,pelaajay,kartta,view_range):
                     print("██",end="")
                 case "ruoho":
                     print("ll",end="")
+                case "vihollinen":
+                    print("ä",end="")
         print()
 
 def movement():
@@ -70,22 +77,22 @@ def movement():
 def ylös():
     global pelaajay
     global pelaajafalsey
-    pelaajay -=2
-    pelaajafalsey +=2
+    pelaajay -=1
+    pelaajafalsey +=1
 
 def alas():
     global pelaajay
     global pelaajafalsey
-    pelaajay += 2
-    pelaajafalsey -=2
+    pelaajay += 1
+    pelaajafalsey -=1
 
 def oikealle():
     global pelaajax
-    pelaajax += 2
+    pelaajax += 1
 
 def vasemmalle():
     global pelaajax
-    pelaajax -= 2
+    pelaajax -= 1
 
 def house(housex,housey):
     house_width = random.randint(5,10)
@@ -102,14 +109,12 @@ for y in range(0,total_mapy):
         if y%10==0 and x%10==0:
             kartta[x,y]="ruoho"
 
-for i in range(30):
+for i in range(5000):
     housex=random.randint(0,total_mapx)
     housey=random.randint(0,total_mapy)
     house(housex,housey)
 
-
-
-
+kartta[vihollinenx,vihollineny]="vihollinen"
 
 while True:
     clear()
@@ -117,10 +122,7 @@ while True:
     print("x:", pelaajax)
     print("y:", pelaajafalsey)
     movement()
-
-
-  
-
-
-    
-            
+    if pelaajax== vihollinenx and pelaajay==vihollineny:
+        main2.vihollisen_hp=10
+        main2.pelaajan_hp=10
+        main2.päädyit_taisteluun()
