@@ -3,13 +3,13 @@ import random
 map_height = 16
 map_width = 16
 
-pelaajay =100
-pelaajax =100
+pelaajay =50
+pelaajax =50
 
 view_range = 10
 
-total_mapy = 300
-total_mapx = 300
+total_mapy = 100
+total_mapx = 100
 
 def empty():
     pass
@@ -30,7 +30,7 @@ def render_map(pelaajax,pelaajay,kartta,view_range):
     for y in range(pelaajay-view_range,pelaajay+view_range+1):
         for x in range(pelaajax-view_range,pelaajax+view_range+1):
             if pelaajax == x and pelaajay == y:
-                print("#",end="")
+                print("# ",end="")
                 continue
             match kartta[(x,y)]:
                 case "1":
@@ -38,7 +38,11 @@ def render_map(pelaajax,pelaajay,kartta,view_range):
                 case "2":
                     print("██",end="")
         print()
-            
+    print()
+    print()
+    print()
+    print()     
+    print()
 
 def ylös():
     global pelaajay
