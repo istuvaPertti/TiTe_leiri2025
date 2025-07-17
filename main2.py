@@ -4,10 +4,14 @@ vihollisen_hp = 10
 pelaajan_hp = 10
 
 def vuorot():
+    global pelaajan_hp
+    global pelaajan_hp
     randomi=random.randint(0,1)
     while True:
         if randomi==1:
             print()
+            print("Vihollisen HP:", vihollisen_hp)
+            print("Pelaajan HP:", pelaajan_hp)
             print("Pelaajan vuoro")
             valinta1=input("Hyökkäätkö vai juoksetko karkuun?: h = hyökkää, j = juokse ")
             if valinta1=="h":
@@ -20,7 +24,6 @@ def vuorot():
                 randomi=random.randint(0,1)
                 if randomi==1:
                     print("Pääsit karkuun")
-                    break
                 else:
                     print("Älä ole pelkuri")
                     print("Pelaajan HP:", str(pelaajan_hp))
@@ -29,8 +32,11 @@ def vuorot():
                         break
             else:
                 print("Tuo ei ole komento")
-                    
+                        
         else:
+            print()
+            print("Vihollisen HP:", vihollisen_hp)
+            print("Pelaajan HP:", pelaajan_hp)
             print("Vihollisen vuoro")
             valinta2=input("Puolustatko vai juoksetko karkuun?: p = puolusta, j = juokse ")
             if valinta2=="p":
@@ -38,11 +44,9 @@ def vuorot():
                 if pelaajan_hp==0:
                     kuoleminen()
                     break
-
             elif valinta2=="j":
                 if randomi==1:
                     print("Onnistuit pakenemaan")
-                    break
                 else:
                     print("Älä ole pelkuri")
                     print("Pelaajan HP:", str(pelaajan_hp))
@@ -51,13 +55,14 @@ def vuorot():
                         break
             else:
                 print("Tuo ei ole komento")
-       
+        
         if randomi==1:
             randomi=0
         else:
             randomi=1
 
 def hyökkäys():
+    global vihollisen_hp
     randomi=random.randint(0,1)
     if randomi==1:
         vihollisen_hp = vihollisen_hp - 1
@@ -67,6 +72,7 @@ def hyökkäys():
         print("Hyökkäys epäonnistui")
 
 def puolustus():
+    global pelaajan_hp
     randomi=random.randint(0,1)
     if randomi==1:
         pelaajan_hp = pelaajan_hp - 1
@@ -76,18 +82,20 @@ def puolustus():
         print("Onnistuit torjumaan hyökkäyksen")
 
 def kuoleminen():
+    global pelaajan_hp
     if pelaajan_hp==0:
+        print()
         print("Kuolit viholliselle")
-        pelaajan_hp = pelaajan_hp - 1
+        pelaajan_hp = pelaajan_hp + 10
 
 def voittaminen():
+    global pelaajan_hp
+    print()
     print("Tapoit vihollisen")
-    print("Pelaajan HP:", str(pelaajan_hp))
+    pelaajan_hp = pelaajan_hp + 10
 
 def päädyit_taisteluun():
     print("Päädyit taisteluun!")
-    print("Vihollisen HP:", str(vihollisen_hp))
-    print("Pelaajan HP:",str(pelaajan_hp))
     vuorot()
 
 testi=str(input())
