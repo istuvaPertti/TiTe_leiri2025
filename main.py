@@ -3,15 +3,15 @@ import os
 import main2
 
 
-pelaajay =50
-pelaajax =50
-pelaajafalsey=50
+pelaajay =1000
+pelaajax =1000
+pelaajafalsey=1000
 
 
 view_range = 15
 
-total_mapy = 200
-total_mapx = 200
+total_mapy = 2000
+total_mapx = 2000
 
 def clear():
     os.system("cls"if os.name=="nt"else"clear")
@@ -102,13 +102,10 @@ for y in range(0,total_mapy):
         if y%10==0 and x%10==0:
             kartta[x,y]="ruoho"
 
-for i in range(30):
+for i in range(5000):
     housex=random.randint(0,total_mapx)
     housey=random.randint(0,total_mapy)
     house(housex,housey)
-
-
-
 
 
 while True:
