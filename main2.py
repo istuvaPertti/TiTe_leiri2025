@@ -19,17 +19,9 @@ def vuorot():
                 if vihollisen_hp==0:
                     voittaminen()
                     break
-
             elif valinta1=="j":
-                randomi=random.randint(0,1)
-                if randomi==1:
-                    print("Pääsit karkuun")
-                else:
-                    print("Älä ole pelkuri")
-                    print("Pelaajan HP:", str(pelaajan_hp))
-                    if pelaajan_hp==0:
-                        kuoleminen()
-                        break
+                print("Pääsit karkuun")
+                break
             else:
                 print("Tuo ei ole komento")
                         
@@ -45,14 +37,8 @@ def vuorot():
                     kuoleminen()
                     break
             elif valinta2=="j":
-                if randomi==1:
-                    print("Onnistuit pakenemaan")
-                else:
-                    print("Älä ole pelkuri")
-                    print("Pelaajan HP:", str(pelaajan_hp))
-                    if pelaajan_hp==0:
-                        kuoleminen()
-                        break
+                print("Onnistuit pakenemaan")
+                break
             else:
                 print("Tuo ei ole komento")
         
