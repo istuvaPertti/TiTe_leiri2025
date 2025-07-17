@@ -3,16 +3,15 @@ import os
 import main2
 
 
-map_height = 16
-map_width = 16
-
 pelaajay =50
 pelaajax =50
+pelaajafalsey=50
 
-view_range = 10
 
-total_mapy = 500
-total_mapx = 500
+view_range = 15
+
+total_mapy = 200
+total_mapx = 200
 
 def clear():
     os.system("cls"if os.name=="nt"else"clear")
@@ -23,7 +22,8 @@ def empty():
 def treasure():
     pass
 
-laatat = ["1","2"]
+laatat = ["1"]
+
 
 def generate_map(total_mapy,total_mapx,laatat):
     return {(x,y):random.choice(laatat)
@@ -40,15 +40,16 @@ def render_map(pelaajax,pelaajay,kartta,view_range):
                 continue
             match kartta[(x,y)]:
                 case "1":
-                    print("██",end="")
+                    print("  ",end="")
                 case "2":
                     print("  ",end="")
                 case "seinä":
                     print("██",end="")
+                case "ruoho":
+                    print("ll",end="")
         print()
 
 def movement():
-
     key=input()
 
     if key == "w":
@@ -66,11 +67,15 @@ def movement():
 
 def ylös():
     global pelaajay
+    global pelaajafalsey
     pelaajay -=1
+    pelaajafalsey +=1
 
 def alas():
     global pelaajay
+    global pelaajafalsey
     pelaajay += 1
+    pelaajafalsey -=1
 
 def oikealle():
     global pelaajax
@@ -80,10 +85,33 @@ def vasemmalle():
     global pelaajax
     pelaajax -= 1
 
+def house(housex,housey):
+    house_width = random.randint(5,10)
+    house_height = random.randint(5,10)
+
+    for y in range(house_height):
+        for x in range(house_width):
+            kartta[housex+x,housey+y]="seinä"
+            
+for i in range(30):
+    housex=random.randint(0,total_mapx)
+    housey=random.randint(0,total_mapy)
+    house(housex,housey)
+
+for y in range(0,total_mapy):
+    for x in range(0,total_mapx):
+        if y%10==0 and x%10==0:
+            kartta[x,y]="ruoho"
+
+
+
+
 
 while True:
     clear()
     render_map(pelaajax,pelaajay,kartta,view_range)
+    print("x:", pelaajax)
+    print("y:", pelaajafalsey)
     movement()
 
 
