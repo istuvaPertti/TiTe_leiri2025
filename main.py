@@ -34,19 +34,19 @@ def render_map(pelaajax,pelaajay,kartta,view_range):
                 continue
             match kartta[(x,y)]:
                 case "1":
-                    print("   ",end="")
+                    print("  ",end="")
                 case "2":
-                    print(" . ",end="")
+                    print("██",end="")
         print()
             
 
 def ylös():
     global pelaajay
-    pelaajay +=1
+    pelaajay -=1
 
 def alas():
     global pelaajay
-    pelaajay -= 1
+    pelaajay += 1
 
 def oikealle():
     global pelaajax
