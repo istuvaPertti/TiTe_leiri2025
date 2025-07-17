@@ -51,7 +51,6 @@ def vuorot():
                         break
             else:
                 print("Tuo ei ole komento")
-        
        
         if randomi==1:
             randomi=0
@@ -63,7 +62,7 @@ def hyökkäys():
     if randomi==1:
         vihollisen_hp = vihollisen_hp - 1
         print("Hyökkäys onnistui")
-        print("Vihollisen HP: " + str(vihollisen_hp))
+        print("Vihollisen HP:", str(vihollisen_hp))
     else:
         print("Hyökkäys epäonnistui")
 
