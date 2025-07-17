@@ -29,6 +29,9 @@ kartta = generate_map(total_mapy,total_mapx,laatat)
 def render_map(pelaajax,pelaajay,kartta,view_range):
     for y in range(pelaajay-view_range,pelaajay+view_range+1):
         for x in range(pelaajax-view_range,pelaajax+view_range+1):
+            if pelaajax == x and pelaajay == y:
+                print("#",end="")
+                continue
             match kartta[(x,y)]:
                 case "1":
                     print("   ",end="")
@@ -55,6 +58,9 @@ def vasemmalle():
 
 
 while True:
+
+    render_map(pelaajax,pelaajay,kartta,view_range)
+
     key = input()
 
     if key == "w":
@@ -69,8 +75,8 @@ while True:
     elif key == "a":
         vasemmalle()
 
-    render_map(pelaajax,pelaajay,kartta,view_range)
-    print(pelaajax)
+
+  
 
 
     
