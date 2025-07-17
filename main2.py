@@ -1,46 +1,91 @@
 import random
 
-randomi=random.randint(0,1)
-
-pelaajan_hp=10
 vihollisen_hp=10
+pelaajan_hp=10
+
+def vuorot():
+    random=random.randint(0,1)
+    while True:
+        if random==1:
+            print()
+            print("Pelaajan vuoro")
+            valinta1=input("Hyökkäätkö vai juoksetko karkuun?: h = hyökkää, j =juokse")
+            if valinta1=="h":
+                hyökkäys()
+                if vihollisen_hp==1:
+                    voittaminen()
+                    break
+
+            else:
+                random=random.randint(0,1)
+                if random==1:
+                    print("Pääsit karkuun")
+                    break
+                else:
+                    pelaajan_hp-=1
+                    print("Älä ole pelkuri")
+                    print("Pelaajan HP:", pelaajan_hp)
+                    if pelaajan_hp==0:
+                        kuoleminen()
+                        break
+
+        else:
+            print("Vihollisen vuoro")
+            valinta2=input("Puolustatko vai juoksetko karkuun?: p = puolusta, j = juokse")
+            if valinta2=="p":
+                puolustus()
+            else:
+                random=random.randint(0,1)
+                if random==1:
+                    print("Onnistuit pakenemaan")
+                    break
+                else:
+                    print("Älä ole pelkuri")
+                    print("Pelaajan HP:", pelaajan_hp)
+                    if pelaajan_hp==0:
+                        kuoleminen()
+                        break
+       
+        if random==1:
+            random=0
+        else:
+            random=1
+
+def hyökkäys():
+    random=random.randint(0,1)
+    if random==1:
+        vihollisen_hp-=1
+        print("Hyökkäys onnisui")
+        print("Vihollisen HP:", vihollisen_hp)
+    else:
+        print("Hyökkäys onnisui")
+
+def puolustus():
+    random=random.randint(0,1)
+    if random==0:
+        pelaajan_hp-=1
+        print("Puolustus epäonnistui")
+        print("Pelaajan HP:", pelaajan_hp)
+        if pelaajan_hp==0:
+            kuoleminen()
+    else:
+        print("Onnistuit torjumaan hyökkäyksen")
+
+def kuoleminen():
+    print("Kuolit viholliselle")
+    pelaajan_hp+=10
+
+def voittaminen():
+    print("Tapoit vihollisen")
+    pelaajan_hp+=1
+    print("Sait yhden HP:n lisää")
+    print("Pelaajan HP:", pelaajan_hp)
 
 def päädyit_taisteluun():
-    print(pelaajan_hp)
     print("Päädyit taisteluun!")
-    while True:
-        print("Pelaajan HP: " + str(pelaajan_hp))
-        print("Vihollisen HP: " + str(vihollisen_hp))
-        valinta=str(input("hyökkää: h, puolusta: p, juokse: j "))
-        if valinta == "h":
-            if randomi == 0:
-                vihollisen_hp=vihollisen_hp - 1
-                print("Onnistunut hyökkäys")
-                if vihollisen_hp == 0:
-                    print("Vihollinen tuhottu")
-                    pelaajan_hp=pelaajan_hp + 1
-                    break
-            else:
-                print("Vihollinen torjui hyökkäyksesi")
-        elif valinta == "p":
-            if randomi == 0:
-                print("Hyökkäys torjuttu onnistuneesti")
-            else:
-                pelaajan_hp=pelaajan_hp - 1
-                print("Olit liian hidas")
-                if pelaajan_hp == 0:
-                    print("Kuolit viholliselle")
-                    print("Jotenkin taisit kuitenkin syntyä uudelleen")
-                    pelaajan_hp=pelaajan_hp +10
-                    break
-        elif valinta == "j":
-            if randomi == 0:
-                print("Pääsit pakenamaan viholliselta")
-                break
-            else:
-                print("Älä ole pelkuri")
-        else:
-            print("Tuo ei ole komento")
+    print("Vihollisen HP:", vihollisen_hp)
+    print("Pelaajan HP:", pelaajan_hp)
+    vuorot()
 
 testi=str(input())
 if testi == "t":
