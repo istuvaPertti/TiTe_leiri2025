@@ -1,7 +1,7 @@
 import random
 
-vihollisen_hp = 10
-pelaajan_hp = 10
+vihollisen_hp = 1
+pelaajan_hp = 1
 
 def vuorot():
     global pelaajan_hp
@@ -94,8 +94,7 @@ def voittaminen():
 
 def päädyit_taisteluun():
     print("Päädyit taisteluun!")
-    while True:
-        vuorot()
+    vuorot()
 
 testi=str(input())
 if testi == "t":
