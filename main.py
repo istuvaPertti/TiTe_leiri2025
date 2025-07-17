@@ -63,27 +63,29 @@ def movement():
 
     elif key == "a":
         vasemmalle()
+    else:
+        print("")
 
 
 def ylös():
     global pelaajay
     global pelaajafalsey
-    pelaajay -=1
-    pelaajafalsey +=1
+    pelaajay -=2
+    pelaajafalsey +=2
 
 def alas():
     global pelaajay
     global pelaajafalsey
-    pelaajay += 1
-    pelaajafalsey -=1
+    pelaajay += 2
+    pelaajafalsey -=2
 
 def oikealle():
     global pelaajax
-    pelaajax += 1
+    pelaajax += 2
 
 def vasemmalle():
     global pelaajax
-    pelaajax -= 1
+    pelaajax -= 2
 
 def house(housex,housey):
     house_width = random.randint(5,10)
@@ -93,15 +95,17 @@ def house(housex,housey):
         for x in range(house_width):
             kartta[housex+x,housey+y]="seinä"
             
-for i in range(30):
-    housex=random.randint(0,total_mapx)
-    housey=random.randint(0,total_mapy)
-    house(housex,housey)
+
 
 for y in range(0,total_mapy):
     for x in range(0,total_mapx):
         if y%10==0 and x%10==0:
             kartta[x,y]="ruoho"
+
+for i in range(30):
+    housex=random.randint(0,total_mapx)
+    housey=random.randint(0,total_mapy)
+    house(housex,housey)
 
 
 
