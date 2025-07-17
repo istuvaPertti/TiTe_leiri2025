@@ -84,11 +84,13 @@ def puolustus():
 def kuoleminen():
     global pelaajan_hp
     if pelaajan_hp==0:
+        print()
         print("Kuolit viholliselle")
         pelaajan_hp = pelaajan_hp + 10
 
 def voittaminen():
     global pelaajan_hp
+    print()
     print("Tapoit vihollisen")
     pelaajan_hp = pelaajan_hp + 10
 
