@@ -1,7 +1,7 @@
 import random
 
-vihollisen_hp = 1
-pelaajan_hp = 1
+vihollisen_hp = 10
+pelaajan_hp = 10
 
 def vuorot():
     global pelaajan_hp
