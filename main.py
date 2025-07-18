@@ -3,20 +3,12 @@ import os
 import main2
 
 
-pelaajay =50
-pelaajax =50
-
-vihollineny=50
-vihollinenx=51
+view_range = 16
 
 
-pelaajafalsey=50
 
 
-view_range = 15
 
-total_mapy = 2000
-total_mapx = 2000
 
 def clear():
     os.system("cls"if os.name=="nt"else"clear")
@@ -28,13 +20,45 @@ def treasure():
     pass
 
 laatat = ["1"]
+viesti2="Laita kartan koko: "
+while True:
+    try:
+        kartan_koko=int(input(viesti2))
+        break
+    except:
+        viesti2="Yritä uudelleen: "
 
+total_mapy=kartan_koko
+total_mapx=kartan_koko
+
+print("")
+
+viesti="laita näköetäisyys: "
+while True:
+    try:
+        FOV=int(input(viesti))
+        break
+    except:
+        viesti="yritä uudelleen: "
+
+view_range=FOV
+print("")
+
+
+pelaajax=round(total_mapx/2)
+pelaajay=round(total_mapy/2)
+
+vihollinenx=pelaajax+random.randint(3,7)
+vihollineny=pelaajay+random.randint(3,7)
+
+pelaajafalsey=pelaajay
 
 def generate_map(total_mapy,total_mapx,laatat):
     return {(x,y):random.choice(laatat)
             for x in range(total_mapx)
             for y in range(total_mapy)}
                 
+print("Luodaan maailmaa")
 kartta = generate_map(total_mapy,total_mapx,laatat)
 
 def render_map(pelaajax,pelaajay,kartta,view_range):
@@ -109,7 +133,7 @@ for y in range(0,total_mapy):
         if y%10==0 and x%10==0:
             kartta[x,y]="ruoho"
 
-for i in range(5000):
+for i in range(400):
     housex=random.randint(0,total_mapx)
     housey=random.randint(0,total_mapy)
     house(housex,housey)
